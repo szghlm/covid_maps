@@ -60,14 +60,14 @@ def str_gondozottak(row):
 
 
 def str_dolgozok(row):
-    n = max(int(row['dolgozo_osszletszam']), 0)
+    n = max(int(row['dolgozo_letszam']), 0)
     ncase = int(row['cpoz_dolgozo_szam'])
     nhosp = int(row['cpoz_dolgozo_korhazi_ellatas'])
     ndeath = int(row["cpoz_dolgozo_elhunyt"])
     nrecov = int(row["cpoz_dolgozo_gyogyult"])
 
     return f"{str_intezmeny(row)}" \
-    f"dolgozók száma: {row['dolgozo_letszam']}<br>" \
+    f" dolgozók száma: {row['dolgozo_letszam']}<br>" \
     f"<br><b>Covid19 pozitív dolgozók:</b><br>" \
     f" esetszám: {ncase} ({ncase/n*100:0.2f}%)<br>" \
     f" kórházi ellátás: {nhosp} ({nhosp/n*100:0.2f}%)<br>" \
@@ -77,7 +77,7 @@ def str_dolgozok(row):
 
 
 
-def createLayer(df, layerName, header_value, header_base):
+def createLayer(df, layerName, header_value, header_base, tooltip_func):
     layer = fl.FeatureGroup(name=layerName, overlay=False, control=True)
 
     df_ratio = df[header_value]/df[header_base]
@@ -119,7 +119,7 @@ def createLayer(df, layerName, header_value, header_base):
 
             fl.Marker(
               location = [row['lats'], row['longs']],
-              tooltip = str_gondozottak(row),
+              tooltip = tooltip_func(row),
               icon = fl.Icon(color='black', icon_color=color)
             ).add_to( layer if df_part.shape[0] == 1 else marker_cluster )
 
@@ -137,16 +137,19 @@ def createMap(df): # dataframe
     fl.TileLayer(tiles='cartodbpositron').add_to(base_map)
     base_map.add_to(map)
 
-    layer1 = createLayer(df, 'Covid pozitív gondozott/férőhely', 'cpoz_gondozott_szam', 'ferohely')
+    layer1 = createLayer(df, 'Covid pozitív gondozott/férőhely', 'cpoz_gondozott_szam', 'ferohely',
+                         str_gondozottak)
     layer1.add_to(map)
     #
-    layer2 = createLayer(df, 'Elhunyt covid pozitív gondozott/férőhely', 'cpoz_gondozott_elhunyt', 'ferohely')
+    layer2 = createLayer(df, 'Elhunyt covid pozitív gondozott/férőhely', 'cpoz_gondozott_elhunyt', 'ferohely',
+                         str_gondozottak)
     layer2.add_to(map)
     #
-    layer3 = createLayer(df, 'Covid pozitív dolgozó/dolgozó létszám', 'cpoz_dolgozo_szam', 'dolgozo_letszam')
+    layer3 = createLayer(df, 'Covid pozitív dolgozó/dolgozó létszám', 'cpoz_dolgozo_szam', 'dolgozo_letszam',
+                         str_dolgozok)
     layer3.add_to(map)
     #
-    layer4 = createLayer(df, 'Elhunyt covid pozitív dolgozó/dolgozó létszám', 'cpoz_dolgozo_elhunyt', 'dolgozo_letszam')
+    layer4 = createLayer(df, 'Elhunyt covid pozitív dolgozó/dolgozó létszám', 'cpoz_dolgozo_elhunyt', 'dolgozo_letszam', str_dolgozok)
     layer4.add_to(map)
 
     fl.map.LayerControl(collapsed=False).add_to(map)
@@ -173,10 +176,10 @@ $(document).ready(
 );
 </script>
 
-<h3>COVID19 a szociális otthonokban (2021.03.05-ig) </h3>
+<h3>COVID19 a szociális- és idősotthonokban (2021.03.05-ig) </h3>
                     
 <p>Az adatok forrása: <a href="https://drive.google.com/drive/folders/1yitS_a8PhZ30KREQN_iuoVjVaA-j7KZG?fbclid=IwAR3JFgtNEmEXbNmg-zk2fZ2v86LnZ1Si0Gxly7qUj08Ym7an33xiGUQDvSY">Szoc_otthonok_COVID-19_tábla_megyék_21.03.05_küldésre.xlsx</a><br></p>
-<br><i>Megj.: Megjegyzés: A térkép a <a href="https://python-visualization.github.io/folium/">Folium csomag</a> használatára ad példát. Nem célja tájékoztatást adni a vírushelyzetről..</i>"""
+<br><i>Megj.: Megjegyzés: A térkép a <a href="https://python-visualization.github.io/folium/">Folium csomag</a> használatára ad példát. Nem célja tájékoztatást adni az aktuális vírushelyzetről és erre a felhasznált adatok nem is alkalmasak.</i>"""
 
 
 if __name__ == '__main__':
