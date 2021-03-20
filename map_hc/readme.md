@@ -1,6 +1,6 @@
 <h3> COVID19 adatok térképi megjelenítése </h3>
 
-Az elkészült térkép a [Folium csomag]("https://python-visualization.github.io/folium/") használatára ad példát. Nem célja tájékoztatást adni a vírushelyzetről.
+Az elkészült térkép a [Folium csomag](https://python-visualization.github.io/folium/) használatára ad példát. Nem célja tájékoztatást adni a vírushelyzetről.
 
 ### Covid19 adatok
 
@@ -15,10 +15,10 @@ Az adatok kezelője a Nemzeti Népegészségügyi Központ.
 **Az adatok formátuma, felépítése**
 
 Az adatok táblázatos formában (Google Sheets) érhetőek el:
-[Szoc_otthonok_COVID-19_tábla_megyék_21.03.05_küldésre.xlsx]("https://drive.google.com/drive/folders/1yitS_a8PhZ30KREQN_iuoVjVaA-j7KZG?fbclid=IwAR3JFgtNEmEXbNmg-zk2fZ2v86LnZ1Si0Gxly7qUj08Ym7an33xiGUQDvSY").
+[Szoc_otthonok_COVID-19_tábla_megyék_21.03.05_küldésre.xlsx](https://drive.google.com/drive/folders/1yitS_a8PhZ30KREQN_iuoVjVaA-j7KZG?fbclid=IwAR3JFgtNEmEXbNmg-zk2fZ2v86LnZ1Si0Gxly7qUj08Ym7an33xiGUQDvSY) .
 A térkép előállításához a dokumentum 2-20. lapját használtam fel.
 
 
 ### Térképi adatok
 
-A térkép adatok forrása az [OpenStreetMap](https://wiki.openstreetmap.org/wiki/Main_Page) (későbbiekben OSM) szabad licencű térinformatikai adatbázis. 
+A térkép adatok forrása az [OpenStreetMap](https://wiki.openstreetmap.org/wiki/Main_Page) szabad licencű térinformatikai adatbázis. 
