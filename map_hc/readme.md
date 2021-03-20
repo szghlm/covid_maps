@@ -1,8 +1,8 @@
 <h3> COVID19 adatok térképi megjelenítése </h3>
 
-Az elkészült térkép a [Folium csomag](https://python-visualization.github.io/folium/) használatára ad példát. Nem célja tájékoztatást adni a vírushelyzetről.
+Az elkészült térkép a [Folium csomag](https://python-visualization.github.io/folium/) használatára ad példát. Nem célja tájékoztatást adni az akutális vírushelyzetről és erre a felhasznált adatok nem is alkalmasak.
 
-### Covid19 adatok
+#### Covid19 adatok
 
 A magyarországi szociális/idős otthonok 2021.03.05-ig összesített fertőzöttségi, halálozási és gyógyulási adatai intézményenkénti bontásban. 
 A térkép nem tartalmazza az egyéb intézményekre vonatkzó adatokat. 
@@ -19,6 +19,6 @@ Az adatok táblázatos formában (Google Sheets) érhetőek el:
 A térkép előállításához a dokumentum 2-20. lapját használtam fel.
 
 
-### Térképi adatok
+#### Térképi adatok
 
 A térkép adatok forrása az [OpenStreetMap](https://wiki.openstreetmap.org/wiki/Main_Page) szabad licencű térinformatikai adatbázis. 
