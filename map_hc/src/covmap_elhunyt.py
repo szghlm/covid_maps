@@ -56,7 +56,7 @@ def str_elhunyt(row):
     population = max(int(row['nepesseg']), 1)
     city = row['telepules']
 
-    return f"<b>{city}</b>" \
+    return f"<b>{city}</b><br><br>" \
     f" elhunyt: {ndeath} fő<br>" \
     f" népesség: {population} fő<br>" \
     f" elhunytak/népesség: {ndeath/population*100:0.2f}% "
@@ -114,7 +114,11 @@ def createHtml(map, title, message, note, dest_filename = 'map.html'):
 
 
 title = "COVID19 - elhunytak száma településenként (2021.03.04-ig)"
-message ="""Az adatok forrása: https://docs.google.com/spreadsheets/d/1ConGRVdv8jocW8G1lhpLqbDVnYwibjP1xhQJ5qiP_Ew/edit#gid=352892695"""
+message ="""
+  A színskála a települések százalékos veszteségét mutatja, míg a körök nagysága az elhunytak számával áll kapcsolatban. A pontos adatok leolvasásához vigye az egeret a jelölő fölé. 
+  <br>
+  Az adatok forrása: <a href = 'https://docs.google.com/spreadsheets/d/1ConGRVdv8jocW8G1lhpLqbDVnYwibjP1xhQJ5qiP_Ew/edit#gid=352892695'>https://docs.google.com/spreadsheets/d/1ConGRVdv8jocW8G1lhpLqbDVnYwibjP1xhQJ5qiP_Ew/edit#gid=352892695</a><br>
+ A kiadott adatok eredetileg pdf formában voltak (szkennelt dokumentumok). A K-monitor hozta felhasználható formára. Az adatsor a konverzió miatt hibákat tartalmazhat. """
 note = """Megj.: A térkép a <a href="https://python-visualization.github.io/folium/">Folium csomag</a> használatára ad példát. Nem célja tájékoztatást adni az aktuális vírushelyzetről és erre a felhasznált adatok nem is alkalmasak.</i>"""
 
 
